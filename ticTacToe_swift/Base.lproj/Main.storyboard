@@ -19,25 +19,59 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TIC TAC TOE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uxp-cp-gUr">
                                 <rect key="frame" x="68.333333333333343" y="79" width="256.66666666666663" height="52.666666666666657"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="44"/>
-                                <color key="textColor" red="0.011764705882352941" green="0.0" blue="0.10980392156862745" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="textColor" red="0.87058818339999999" green="0.34901961679999999" blue="0.30196079609999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                                 <size key="shadowOffset" width="1" height="1"/>
                             </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="q9y-wM-J3u" userLabel="Player Buttons">
+                                <rect key="frame" x="97.333333333333329" y="606" width="198.33333333333337" height="162"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mpd-Pk-fkU">
+                                        <rect key="frame" x="0.0" y="0.0" width="198.33333333333334" height="56"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="1 PLAYER">
+                                            <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="35"/>
+                                            <color key="baseBackgroundColor" red="0.27450981740000002" green="0.60392159219999997" blue="0.5411764979" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="onePlayerSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="d1e-rU-lHP"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tXh-pz-bHe">
+                                        <rect key="frame" x="0.0" y="106" width="198.33333333333334" height="56"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="2 PLAYERS">
+                                            <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="35"/>
+                                            <color key="baseBackgroundColor" red="0.27450981740000002" green="0.60392159219999997" blue="0.5411764979" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="twoPlayerSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lG7-e7-FfO"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="home" translatesAutoresizingMaskIntoConstraints="NO" id="l2h-Pz-Lm7">
+                                <rect key="frame" x="59" y="206" width="275" height="235"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Uxp-cp-gUr" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="ANv-8q-VsF"/>
                             <constraint firstItem="Uxp-cp-gUr" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="YL5-ad-SX0"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="q9y-wM-J3u" secondAttribute="bottom" constant="50" id="fOq-63-paR"/>
+                            <constraint firstItem="q9y-wM-J3u" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="zlL-Qj-fDr"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="58" y="-2"/>
+            <point key="canvasLocation" x="57.251908396946561" y="-2.1126760563380285"/>
         </scene>
     </scenes>
     <resources>
+        <image name="home" width="189" height="185"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

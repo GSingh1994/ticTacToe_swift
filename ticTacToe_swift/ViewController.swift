@@ -8,12 +8,19 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    @IBAction func onePlayerSelected(_ sender: UIButton) {
+        print("one player pressed")
+    }
+    
+    @IBAction func twoPlayerSelected(_ sender: UIButton) {
+        print("two player pressed")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        
     }
-
-
+    
 }
-
