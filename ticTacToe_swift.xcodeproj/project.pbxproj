@@ -13,7 +13,7 @@
 		5419B8CF2986D53800CDB4F1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5419B8CD2986D53800CDB4F1 /* Main.storyboard */; };
 		5419B8D12986D53900CDB4F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5419B8D02986D53900CDB4F1 /* Assets.xcassets */; };
 		5419B8D42986D53900CDB4F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5419B8D22986D53900CDB4F1 /* LaunchScreen.storyboard */; };
-		544682062989677F0034ADD3 /* ViewControllerGameBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 544682052989677F0034ADD3 /* ViewControllerGameBoard.swift */; };
+		544682062989677F0034ADD3 /* gameBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 544682052989677F0034ADD3 /* gameBoard.swift */; };
 		544682082989C0BE0034ADD3 /* mainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 544682072989C0BE0034ADD3 /* mainScreen.swift */; };
 		5454C26229874BA800A9A06B /* gameBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5454C26129874BA800A9A06B /* gameBoardViewController.swift */; };
 /* End PBXBuildFile section */
@@ -27,7 +27,7 @@
 		5419B8D02986D53900CDB4F1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5419B8D32986D53900CDB4F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5419B8D52986D53900CDB4F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		544682052989677F0034ADD3 /* ViewControllerGameBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerGameBoard.swift; sourceTree = "<group>"; };
+		544682052989677F0034ADD3 /* gameBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gameBoard.swift; sourceTree = "<group>"; };
 		544682072989C0BE0034ADD3 /* mainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainScreen.swift; sourceTree = "<group>"; };
 		5454C26129874BA800A9A06B /* gameBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gameBoardViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -47,7 +47,7 @@
 			isa = PBXGroup;
 			children = (
 				544682072989C0BE0034ADD3 /* mainScreen.swift */,
-				544682052989677F0034ADD3 /* ViewControllerGameBoard.swift */,
+				544682052989677F0034ADD3 /* gameBoard.swift */,
 				5419B8C62986D53800CDB4F1 /* ticTacToe_swift */,
 				5419B8C52986D53800CDB4F1 /* Products */,
 			);
@@ -148,7 +148,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5419B8CC2986D53800CDB4F1 /* ViewController.swift in Sources */,
-				544682062989677F0034ADD3 /* ViewControllerGameBoard.swift in Sources */,
+				544682062989677F0034ADD3 /* gameBoard.swift in Sources */,
 				5454C26229874BA800A9A06B /* gameBoardViewController.swift in Sources */,
 				5419B8C82986D53800CDB4F1 /* AppDelegate.swift in Sources */,
 				544682082989C0BE0034ADD3 /* mainScreen.swift in Sources */,

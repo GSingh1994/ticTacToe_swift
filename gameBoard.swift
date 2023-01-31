@@ -1,6 +1,6 @@
 import UIKit
 
-class ViewControllerGameBoard: UIViewController {
+class gameBoard: UIViewController {
     
     //Board squares
     @IBOutlet weak var a1: UIButton!
@@ -17,13 +17,13 @@ class ViewControllerGameBoard: UIViewController {
     @IBOutlet weak var currentTurnLabel: UILabel!
     
     struct Player {
-        var name: String
+        var name: String?
         var isPlaying: Bool
         var symbol: String
         var score: Int
         var isWinner: Bool
         
-        init(name: String, isPlaying: Bool, symbol: String, score: Int, isWinner: Bool) {
+        init(name: String?, isPlaying: Bool, symbol: String, score: Int, isWinner: Bool) {
             self.name = name
             self.isPlaying = isPlaying
             self.symbol = symbol
@@ -32,11 +32,11 @@ class ViewControllerGameBoard: UIViewController {
         }
     }
     
-    var p1 = Player(name: "p1", isPlaying: true, symbol: "X", score: 0, isWinner: false)
+    var p1 = Player(name: nil, isPlaying: true, symbol: "X", score: 0, isWinner: false)
     
     var p2 = Player(name: "p2", isPlaying: false, symbol: "O", score: 0, isWinner: false)
     
-    var currentPlayer: ViewControllerGameBoard.Player? //don't know why
+    var currentPlayer: gameBoard.Player? //don't know why
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -107,7 +107,8 @@ class ViewControllerGameBoard: UIViewController {
     func showAlert() {
         let alert = UIAlertController(title: "\(currentPlayer!.name) won!", message: nil, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "Reset", style: UIAlertAction.Style.default, handler: { _ in
-            //Reset Action
+            //Reset Action ->> send back to main screen
+            self.navigationController?.popViewController(animated: true)
         }))
         alert.addAction(UIAlertAction(title: "Play again", style: UIAlertAction.Style.default,handler: {(_: UIAlertAction!) in
             //Play again action
