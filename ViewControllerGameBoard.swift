@@ -1,10 +1,3 @@
-//
-//  ViewControllerGameBoard.swift
-//  ticTacToe_swift
-//
-//  Created by Gagan on 2023-01-31.
-//
-
 import UIKit
 
 class ViewControllerGameBoard: UIViewController {
@@ -20,6 +13,7 @@ class ViewControllerGameBoard: UIViewController {
     @IBOutlet weak var c2: UIButton!
     @IBOutlet weak var c3: UIButton!
     
+    @IBOutlet weak var titleLabel: UILabel! //remove this later
     @IBOutlet weak var currentTurnLabel: UILabel!
     
     struct Player {
@@ -42,10 +36,7 @@ class ViewControllerGameBoard: UIViewController {
     
     var p2 = Player(name: "p2", isPlaying: false, symbol: "O", score: 0, isWinner: false)
     
-    
     var currentPlayer: ViewControllerGameBoard.Player? //don't know why
-        
-    var winningCondition = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,29 +45,83 @@ class ViewControllerGameBoard: UIViewController {
     }
     
     func game() {
+        let winningCondition = checkWinner()
         
-        //stop game
+        //Decide to stop game or change turns
         if !winningCondition {
             p1.isPlaying = !p1.isPlaying
             p2.isPlaying = !p2.isPlaying
-        }
-        
-        //change turns
-        if p1.isPlaying {
-            currentPlayer = p1
+            
+            //change turn
+            currentPlayer = p1.isPlaying ? p1 : p2
         } else {
-            currentPlayer = p2
+            //            titleLabel.text = "Winner is"
+            currentPlayer?.isWinner = true
+            //show end-game alert msg
+            showAlert()
         }
         
         //change current turn label
         currentTurnLabel.text = currentPlayer!.symbol
+    }
+    
+    func checkWinner() -> Bool {
+        //winning combinations
+        if a1.currentTitle == a2.currentTitle && a2.currentTitle == a3.currentTitle {
+            if a1.currentTitle != nil {
+                return true
+            }
+        } else if b1.currentTitle == b2.currentTitle && b2.currentTitle == b3.currentTitle {
+            if b1.currentTitle != nil {
+                return true
+            }
+        } else if c1.currentTitle == c2.currentTitle && c2.currentTitle == c3.currentTitle {
+            if c1.currentTitle != nil {
+                return true
+            }
+        } else if a1.currentTitle == b1.currentTitle && b1.currentTitle == c1.currentTitle {
+            if a1.currentTitle != nil {
+                return true
+            }
+        } else if a2.currentTitle == b2.currentTitle && b2.currentTitle == c2.currentTitle {
+            if a2.currentTitle != nil {
+                return true
+            }
+        } else if a3.currentTitle == b3.currentTitle && b3.currentTitle == c3.currentTitle {
+            if a3.currentTitle != nil {
+                return true
+            }
+        } else if a1.currentTitle == b2.currentTitle && b2.currentTitle == c3.currentTitle {
+            if a1.currentTitle != nil {
+                return true
+            }
+        } else if a3.currentTitle == b2.currentTitle && b2.currentTitle == c1.currentTitle {
+            if a3.currentTitle != nil {
+                return true
+            }
+        }
+        
+        return false
+    }
+    
+    func showAlert() {
+        let alert = UIAlertController(title: "\(currentPlayer!.name) won!", message: nil, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Reset", style: UIAlertAction.Style.default, handler: { _ in
+            //Reset Action
+        }))
+        alert.addAction(UIAlertAction(title: "Play again", style: UIAlertAction.Style.default,handler: {(_: UIAlertAction!) in
+            //Play again action
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
         
     }
     
     @IBAction func squarePressed(_ sender: UIButton) {
-        //change square text (X/O)
-        sender.setTitle(currentPlayer!.symbol, for: .normal)
-        
+        if currentPlayer?.isWinner == false { //avoid text change at game end
+            //change square text (X/O)
+            sender.setTitle(currentPlayer!.symbol, for: .normal)
+        }
         
         //main logic
         game()
