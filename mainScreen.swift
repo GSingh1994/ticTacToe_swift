@@ -41,7 +41,6 @@ class mainScreen: UIViewController {
     
     var playerOneScore = 0
     var playerTwoScore = 0
-    
   
     override func viewDidLoad() {
         super.viewDidLoad()

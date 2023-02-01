@@ -21,6 +21,8 @@ class gameBoard: UIViewController {
     @IBOutlet weak var c2: UIButton!
     @IBOutlet weak var c3: UIButton!
     
+    @IBOutlet weak var gameNumber: UILabel!
+    
     //scoreboard
     @IBOutlet weak var playerOneLabel: UILabel!
     @IBOutlet weak var playerTwoLabel: UILabel!
@@ -54,7 +56,12 @@ class gameBoard: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //hide back-button
         self.navigationItem.setHidesBackButton(true, animated: true)
+    
+        //show game number
+        gameNumber.text = "Game #" + String(p1.score + p2.score + 1)
         
         //add styles to scoreView
         scoreView.layer.cornerRadius = 10
@@ -86,7 +93,6 @@ class gameBoard: UIViewController {
             playerTwoLabel.textColor = greenColor
         }
 
-        
         //start game with p1
         currentPlayer = p1
         p1.isPlaying = true
@@ -203,7 +209,7 @@ class gameBoard: UIViewController {
         let alertStatement = result == "win" ? "\(currentPlayer!.name) won!" : "Draw!!"
         
         let alert = UIAlertController(title: alertStatement, message: nil, preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "Reset", style: UIAlertAction.Style.default, handler: { _ in
+        alert.addAction(UIAlertAction(title: "Go home", style: UIAlertAction.Style.default, handler: { _ in
             //Reset Action ->> send back to main screen
             self.navigationController?.popViewController(animated: true)
         }))
