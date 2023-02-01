@@ -66,8 +66,25 @@ class gameBoard: UIViewController {
         playerOneLabel.text = p1.name
         playerTwoLabel.text = p2.name
         
+        //fill previous game scores
         playerOneScore.text = String(p1.score)
         playerTwoScore.text = String(p2.score)
+        
+        let redColor = UIColor(red: 0.87, green: 0.35, blue: 0.30, alpha: 1.00)
+        let greenColor = UIColor(red: 0.34, green: 0.74, blue: 0.68, alpha: 1.00)
+        //change player color
+        if p1.symbol == "X" {
+            playerOneLabel.textColor = redColor
+        } else {
+            playerOneLabel.textColor = greenColor
+        }
+        
+        if p2.symbol == "X" {
+            playerTwoLabel.textColor = redColor
+        } else {
+            playerTwoLabel.textColor = greenColor
+        }
+
         
         //start game with p1
         currentPlayer = p1
@@ -194,7 +211,6 @@ class gameBoard: UIViewController {
         }))
         
         self.present(alert, animated: true, completion: nil)
-        
     }
     
     func resizeImage(imgName: String) -> UIImage {
