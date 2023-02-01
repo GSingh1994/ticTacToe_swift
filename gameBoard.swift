@@ -1,5 +1,13 @@
 import UIKit
 
+extension UIImage {
+    func resized(to size: CGSize) -> UIImage {
+        return UIGraphicsImageRenderer(size: size).image { _ in
+            draw(in: CGRect(origin: .zero, size: size))
+        }
+    }
+}
+
 class gameBoard: UIViewController {
     
     //Board squares
@@ -45,13 +53,13 @@ class gameBoard: UIViewController {
         currentPlayer = p1
         
         //style Board Ui view
-        gameBoardUIView.layer.borderWidth = 5
-        gameBoardUIView.layer.borderColor = UIColor.white.cgColor
-        gameBoardUIView.layer.shadowColor = UIColor.white.cgColor
-        gameBoardUIView.layer.shadowOpacity = 1
-        gameBoardUIView.layer.shadowOffset = .zero
-        gameBoardUIView.layer.shadowRadius = 10
-        gameBoardUIView.layoutMargins = UIEdgeInsets(top: 30, left: 30, bottom: 30, right: 30);
+//        gameBoardUIView.layer.borderWidth = 5
+//        gameBoardUIView.layer.borderColor = UIColor.white.cgColor
+//        gameBoardUIView.layer.shadowColor = UIColor.white.cgColor
+//        gameBoardUIView.layer.shadowOpacity = 1
+//        gameBoardUIView.layer.shadowOffset = .zero
+//        gameBoardUIView.layer.shadowRadius = 10
+//        gameBoardUIView.layoutMargins = UIEdgeInsets(top: 30, left: 30, bottom: 30, right: 30);
         
         
         //add custom gradient background
@@ -148,6 +156,14 @@ class gameBoard: UIViewController {
         
     }
     
+    
+    func resizeImage(imgName: String) -> UIImage {
+        var oimage = UIImage(named: imgName)
+        let resizedImage =  oimage?.resized(to: CGSize(width: 80, height: 80))
+        return resizedImage!
+    }
+    
+    
     @IBAction func squarePressed(_ sender: UIButton) {
 //        if currentPlayer?.isWinner == false {
             //avoid text change at game end
@@ -156,15 +172,18 @@ class gameBoard: UIViewController {
         
         // Disable btn after turn
         sender.isEnabled = false
-        //change square text (X/O)
-        sender.setTitle(currentPlayer!.symbol, for: .normal)
+        
+        //change square image (X/O)
+        let OImage = resizeImage(imgName: "o.svg")
+        let XImage = resizeImage(imgName: "x.svg")
+        sender.setImage(currentPlayer!.symbol == "X" ? XImage : OImage, for: .normal)
         
         // change X and O colors
-        if sender.currentTitle == "X" {
-            sender.setTitleColor(UIColor(red: 0.60, green: 0.77, blue: 0.95, alpha: 1.00), for: .normal)
-        } else {
-            sender.setTitleColor(UIColor(red: 0.93, green: 0.48, blue: 0.55, alpha: 1.00), for: .normal)
-        }
+//        if sender.currentTitle == "X" {
+//            sender.setTitleColor(UIColor(red: 0.60, green: 0.77, blue: 0.95, alpha: 1.00), for: .normal)
+//        } else {
+//            sender.setTitleColor(UIColor(red: 0.93, green: 0.48, blue: 0.55, alpha: 1.00), for: .normal)
+//        }
         
         //main logic
         game()
