@@ -99,7 +99,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="Yi1-sM-25L" userLabel="Board">
-                                <rect key="frame" x="19.333333333333343" y="261" width="355.33333333333326" height="355.33333333333326"/>
+                                <rect key="frame" x="19" y="261" width="355.33333333333331" height="355.33333333333326"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="3" id="J5C-zy-eWW">
                                         <rect key="frame" x="0.0" y="0.0" width="355.33333333333331" height="116.33333333333333"/>
@@ -236,25 +236,10 @@
                                     <constraint firstAttribute="width" secondItem="Yi1-sM-25L" secondAttribute="height" multiplier="1:1" id="tkW-Zs-r0o"/>
                                 </constraints>
                             </stackView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yhb-G3-6yC" userLabel="current turn">
-                                <rect key="frame" x="16" y="59" width="361" height="158"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OZC-dJ-iVO">
+                                <rect key="frame" x="76" y="91" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Turn" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rmk-c0-4a4">
-                                        <rect key="frame" x="8" y="0.0" width="353" height="54"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="45"/>
-                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="X" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KGB-WC-YA2">
-                                        <rect key="frame" x="158" y="76" width="42" height="81"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="62"/>
-                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="NbR-RY-Y7D"/>
@@ -276,9 +261,7 @@
                         <outlet property="c1" destination="Rq8-t1-dYF" id="jkY-8v-PZx"/>
                         <outlet property="c2" destination="IdS-z5-98f" id="Nkb-wr-eUw"/>
                         <outlet property="c3" destination="K2j-QG-rlY" id="bB9-h9-5Gw"/>
-                        <outlet property="currentTurnLabel" destination="KGB-WC-YA2" id="YHW-QM-Pw8"/>
                         <outlet property="gameBoardUIView" destination="Yi1-sM-25L" id="5UL-5J-tH9"/>
-                        <outlet property="titleLabel" destination="Rmk-c0-4a4" id="cau-89-Vbv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n4k-Yu-ceY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -13,8 +13,7 @@ class gameBoard: UIViewController {
     @IBOutlet weak var c2: UIButton!
     @IBOutlet weak var c3: UIButton!
     
-    @IBOutlet weak var titleLabel: UILabel! //remove this later
-    @IBOutlet weak var currentTurnLabel: UILabel!
+    
     
     @IBOutlet weak var gameBoardUIView: UIStackView!
     
@@ -92,9 +91,6 @@ class gameBoard: UIViewController {
             //show end-game alert msg
             showAlert(result: "win")
         }
-        
-        //change current turn label
-        currentTurnLabel.text = currentPlayer!.symbol
     }
     
     func checkWinner() -> Bool {
