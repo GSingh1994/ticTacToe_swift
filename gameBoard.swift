@@ -101,47 +101,58 @@ class gameBoard: UIViewController {
         } else {
             currentPlayer?.isWinner = true
             //show end-game alert msg
+            
             showAlert(result: "win")
+            
+            //change scores
+            currentPlayer?.score += 1
+            playerOneScore.text = String(p1.score)
+            playerTwoScore.text = String(p2.score)
         }
     }
     
     func checkWinner() -> Bool {
         //winning combinations
         if a1.restorationIdentifier == a2.restorationIdentifier && a2.restorationIdentifier == a3.restorationIdentifier {
-            
             if a1.restorationIdentifier != nil {
                 return true
             }
-        } else if b1.restorationIdentifier == b2.restorationIdentifier && b2.restorationIdentifier == b3.restorationIdentifier {
+        }
+        if b1.restorationIdentifier == b2.restorationIdentifier && b2.restorationIdentifier == b3.restorationIdentifier {
             if b1.restorationIdentifier != nil {
                 return true
             }
-        } else if c1.restorationIdentifier == c2.restorationIdentifier && c2.restorationIdentifier == c3.restorationIdentifier {
+        }
+        if c1.restorationIdentifier == c2.restorationIdentifier && c2.restorationIdentifier == c3.restorationIdentifier {
             if c1.restorationIdentifier != nil {
                 return true
             }
-        } else if a1.restorationIdentifier == b1.restorationIdentifier && b1.restorationIdentifier == c1.restorationIdentifier {
+        }
+        if a1.restorationIdentifier == b1.restorationIdentifier && b1.restorationIdentifier == c1.restorationIdentifier {
             if a1.restorationIdentifier != nil {
                 return true
             }
-        } else if a2.restorationIdentifier == b2.restorationIdentifier && b2.restorationIdentifier == c2.restorationIdentifier {
+        }
+        if a2.restorationIdentifier == b2.restorationIdentifier && b2.restorationIdentifier == c2.restorationIdentifier {
             if a2.restorationIdentifier != nil {
                 return true
             }
-        } else if a3.restorationIdentifier == b3.restorationIdentifier && b3.restorationIdentifier == c3.restorationIdentifier {
-            if a3.restorationIdentifier != nil {
-                return true
-            }
-        } else if a1.restorationIdentifier == b2.restorationIdentifier && b2.restorationIdentifier == c3.restorationIdentifier {
-            if a1.restorationIdentifier != nil {
-                return true
-            }
-        } else if a3.restorationIdentifier == b2.restorationIdentifier && b2.restorationIdentifier == c1.restorationIdentifier {
+        }
+        if a3.restorationIdentifier == b3.restorationIdentifier && b3.restorationIdentifier == c3.restorationIdentifier {
             if a3.restorationIdentifier != nil {
                 return true
             }
         }
-        
+        if a1.restorationIdentifier == b2.restorationIdentifier && b2.restorationIdentifier == c3.restorationIdentifier {
+            if a1.restorationIdentifier != nil {
+                return true
+            }
+        }
+        if a3.restorationIdentifier == b2.restorationIdentifier && b2.restorationIdentifier == c1.restorationIdentifier {
+            if a3.restorationIdentifier != nil {
+                return true
+            }
+        }
         return false
     }
     
