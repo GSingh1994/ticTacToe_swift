@@ -16,6 +16,8 @@ class gameBoard: UIViewController {
     @IBOutlet weak var titleLabel: UILabel! //remove this later
     @IBOutlet weak var currentTurnLabel: UILabel!
     
+    @IBOutlet weak var gameBoardUIView: UIStackView!
+    
     struct Player {
         var name: String
         var isPlaying: Bool
@@ -42,12 +44,43 @@ class gameBoard: UIViewController {
         super.viewDidLoad()
         //start game with p1
         currentPlayer = p1
+        
+        //style Board Ui view
+        gameBoardUIView.layer.borderWidth = 5
+        gameBoardUIView.layer.borderColor = UIColor.white.cgColor
+        gameBoardUIView.layer.shadowColor = UIColor.white.cgColor
+        gameBoardUIView.layer.shadowOpacity = 1
+        gameBoardUIView.layer.shadowOffset = .zero
+        gameBoardUIView.layer.shadowRadius = 10
+        gameBoardUIView.layoutMargins = UIEdgeInsets(top: 30, left: 30, bottom: 30, right: 30);
+        
+        
+        //add custom gradient background
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = view.bounds
+        let firstGradientColor = UIColor(red: 0.84, green: 0.87, blue: 0.89, alpha: 1.00).cgColor
+        let secondGradientColor = UIColor(red: 0.89, green: 0.84, blue: 0.85, alpha: 1.00).cgColor
+        gradientLayer.colors = [firstGradientColor,secondGradientColor]
+        gradientLayer.zPosition = -1
+        gradientLayer.opacity = 1
+        view.layer.addSublayer(gradientLayer)
     }
     
+    //track total turns for draw condition
+    var totalTurns: Int = 0
+    
     func game() {
+        
+        totalTurns += 1
+        
         let winningCondition = checkWinner()
         
-        //Decide to stop game or change turns
+        //Draw game
+        if !winningCondition && totalTurns == 9 {
+            return showAlert(result: "draw")
+        }
+            
+        //Decide winner or change turns
         if !winningCondition {
             p1.isPlaying = !p1.isPlaying
             p2.isPlaying = !p2.isPlaying
@@ -55,10 +88,9 @@ class gameBoard: UIViewController {
             //change turn
             currentPlayer = p1.isPlaying ? p1 : p2
         } else {
-            //            titleLabel.text = "Winner is"
             currentPlayer?.isWinner = true
             //show end-game alert msg
-            showAlert()
+            showAlert(result: "win")
         }
         
         //change current turn label
@@ -104,8 +136,10 @@ class gameBoard: UIViewController {
         return false
     }
     
-    func showAlert() {
-        let alert = UIAlertController(title: "\(currentPlayer!.name) won!", message: nil, preferredStyle: UIAlertController.Style.alert)
+    func showAlert(result: String) {
+        var alertStatement = result == "win" ? "\(currentPlayer!.name) won!" : "Draw!!"
+        
+        let alert = UIAlertController(title: alertStatement, message: nil, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "Reset", style: UIAlertAction.Style.default, handler: { _ in
             //Reset Action ->> send back to main screen
             self.navigationController?.popViewController(animated: true)
@@ -119,9 +153,21 @@ class gameBoard: UIViewController {
     }
     
     @IBAction func squarePressed(_ sender: UIButton) {
-        if currentPlayer?.isWinner == false { //avoid text change at game end
-            //change square text (X/O)
-            sender.setTitle(currentPlayer!.symbol, for: .normal)
+//        if currentPlayer?.isWinner == false {
+            //avoid text change at game end
+           
+//        }
+        
+        // Disable btn after turn
+        sender.isEnabled = false
+        //change square text (X/O)
+        sender.setTitle(currentPlayer!.symbol, for: .normal)
+        
+        // change X and O colors
+        if sender.currentTitle == "X" {
+            sender.setTitleColor(UIColor(red: 0.60, green: 0.77, blue: 0.95, alpha: 1.00), for: .normal)
+        } else {
+            sender.setTitleColor(UIColor(red: 0.93, green: 0.48, blue: 0.55, alpha: 1.00), for: .normal)
         }
         
         //main logic
