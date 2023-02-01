@@ -41,14 +41,14 @@ class mainScreen: UIViewController {
         super.viewDidLoad()
         
         //add custom gradient background
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = view.bounds
-        let firstGradientColor = UIColor(red: 0.58, green: 0.31, blue: 0.44, alpha: 1.00).cgColor
-        let secondGradientColor = UIColor(red: 0.30, green: 0.49, blue: 0.59, alpha: 1.00).cgColor
-        gradientLayer.colors = [firstGradientColor,secondGradientColor]
-        gradientLayer.zPosition = -1
-        gradientLayer.opacity = 0.5
-        view.layer.addSublayer(gradientLayer)
+//        let gradientLayer = CAGradientLayer()
+//        gradientLayer.frame = view.bounds
+//        let firstGradientColor = UIColor(red: 0.58, green: 0.31, blue: 0.44, alpha: 1.00).cgColor
+//        let secondGradientColor = UIColor(red: 0.30, green: 0.49, blue: 0.59, alpha: 1.00).cgColor
+//        gradientLayer.colors = [firstGradientColor,secondGradientColor]
+//        gradientLayer.zPosition = -1
+//        gradientLayer.opacity = 0.5
+//        view.layer.addSublayer(gradientLayer)
     }
 
 }

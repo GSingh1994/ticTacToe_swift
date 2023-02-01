@@ -21,9 +21,12 @@ class gameBoard: UIViewController {
     @IBOutlet weak var c2: UIButton!
     @IBOutlet weak var c3: UIButton!
     
-    
-    
-    @IBOutlet weak var gameBoardUIView: UIStackView!
+    //scoreboard
+    @IBOutlet weak var playerOneLabel: UILabel!
+    @IBOutlet weak var playerTwoLabel: UILabel!
+    @IBOutlet weak var playerOneScore: UILabel!
+    @IBOutlet weak var playerTwoScore: UILabel!
+    @IBOutlet weak var scoreView: UIView!
     
     struct Player {
         var name: String
@@ -49,25 +52,26 @@ class gameBoard: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //add styles to scoreView
+        scoreView.layer.cornerRadius = 10
+        scoreView.layer.shadowColor = UIColor.gray.cgColor
+        scoreView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+        scoreView.layer.shadowRadius = 12.0
+        scoreView.layer.shadowOpacity = 0.7
+        
+        //fill labels with player names
+        playerOneLabel.text = p1.name
+        playerTwoLabel.text = p2.name
+        
         //start game with p1
         currentPlayer = p1
-        
-        //style Board Ui view
-//        gameBoardUIView.layer.borderWidth = 5
-//        gameBoardUIView.layer.borderColor = UIColor.white.cgColor
-//        gameBoardUIView.layer.shadowColor = UIColor.white.cgColor
-//        gameBoardUIView.layer.shadowOpacity = 1
-//        gameBoardUIView.layer.shadowOffset = .zero
-//        gameBoardUIView.layer.shadowRadius = 10
-//        gameBoardUIView.layoutMargins = UIEdgeInsets(top: 30, left: 30, bottom: 30, right: 30);
-        
         
         //add custom gradient background
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = view.bounds
         let firstGradientColor = UIColor(red: 0.84, green: 0.87, blue: 0.89, alpha: 1.00).cgColor
         let secondGradientColor = UIColor(red: 0.89, green: 0.84, blue: 0.85, alpha: 1.00).cgColor
-        gradientLayer.colors = [firstGradientColor,secondGradientColor]
+        gradientLayer.colors = [secondGradientColor,firstGradientColor]
         gradientLayer.zPosition = -1
         gradientLayer.opacity = 1
         view.layer.addSublayer(gradientLayer)
@@ -86,7 +90,7 @@ class gameBoard: UIViewController {
         if !winningCondition && totalTurns == 9 {
             return showAlert(result: "draw")
         }
-            
+        
         //Decide winner or change turns
         if !winningCondition {
             p1.isPlaying = !p1.isPlaying
@@ -103,36 +107,37 @@ class gameBoard: UIViewController {
     
     func checkWinner() -> Bool {
         //winning combinations
-        if a1.currentTitle == a2.currentTitle && a2.currentTitle == a3.currentTitle {
-            if a1.currentTitle != nil {
+        if a1.restorationIdentifier == a2.restorationIdentifier && a2.restorationIdentifier == a3.restorationIdentifier {
+            
+            if a1.restorationIdentifier != nil {
                 return true
             }
-        } else if b1.currentTitle == b2.currentTitle && b2.currentTitle == b3.currentTitle {
-            if b1.currentTitle != nil {
+        } else if b1.restorationIdentifier == b2.restorationIdentifier && b2.restorationIdentifier == b3.restorationIdentifier {
+            if b1.restorationIdentifier != nil {
                 return true
             }
-        } else if c1.currentTitle == c2.currentTitle && c2.currentTitle == c3.currentTitle {
-            if c1.currentTitle != nil {
+        } else if c1.restorationIdentifier == c2.restorationIdentifier && c2.restorationIdentifier == c3.restorationIdentifier {
+            if c1.restorationIdentifier != nil {
                 return true
             }
-        } else if a1.currentTitle == b1.currentTitle && b1.currentTitle == c1.currentTitle {
-            if a1.currentTitle != nil {
+        } else if a1.restorationIdentifier == b1.restorationIdentifier && b1.restorationIdentifier == c1.restorationIdentifier {
+            if a1.restorationIdentifier != nil {
                 return true
             }
-        } else if a2.currentTitle == b2.currentTitle && b2.currentTitle == c2.currentTitle {
-            if a2.currentTitle != nil {
+        } else if a2.restorationIdentifier == b2.restorationIdentifier && b2.restorationIdentifier == c2.restorationIdentifier {
+            if a2.restorationIdentifier != nil {
                 return true
             }
-        } else if a3.currentTitle == b3.currentTitle && b3.currentTitle == c3.currentTitle {
-            if a3.currentTitle != nil {
+        } else if a3.restorationIdentifier == b3.restorationIdentifier && b3.restorationIdentifier == c3.restorationIdentifier {
+            if a3.restorationIdentifier != nil {
                 return true
             }
-        } else if a1.currentTitle == b2.currentTitle && b2.currentTitle == c3.currentTitle {
-            if a1.currentTitle != nil {
+        } else if a1.restorationIdentifier == b2.restorationIdentifier && b2.restorationIdentifier == c3.restorationIdentifier {
+            if a1.restorationIdentifier != nil {
                 return true
             }
-        } else if a3.currentTitle == b2.currentTitle && b2.currentTitle == c1.currentTitle {
-            if a3.currentTitle != nil {
+        } else if a3.restorationIdentifier == b2.restorationIdentifier && b2.restorationIdentifier == c1.restorationIdentifier {
+            if a3.restorationIdentifier != nil {
                 return true
             }
         }
@@ -141,7 +146,7 @@ class gameBoard: UIViewController {
     }
     
     func showAlert(result: String) {
-        var alertStatement = result == "win" ? "\(currentPlayer!.name) won!" : "Draw!!"
+        let alertStatement = result == "win" ? "\(currentPlayer!.name) won!" : "Draw!!"
         
         let alert = UIAlertController(title: alertStatement, message: nil, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "Reset", style: UIAlertAction.Style.default, handler: { _ in
@@ -156,20 +161,14 @@ class gameBoard: UIViewController {
         
     }
     
-    
     func resizeImage(imgName: String) -> UIImage {
-        var oimage = UIImage(named: imgName)
+        let oimage = UIImage(named: imgName)
         let resizedImage =  oimage?.resized(to: CGSize(width: 80, height: 80))
         return resizedImage!
     }
     
     
     @IBAction func squarePressed(_ sender: UIButton) {
-//        if currentPlayer?.isWinner == false {
-            //avoid text change at game end
-           
-//        }
-        
         // Disable btn after turn
         sender.isEnabled = false
         
@@ -178,12 +177,7 @@ class gameBoard: UIViewController {
         let XImage = resizeImage(imgName: "x.svg")
         sender.setImage(currentPlayer!.symbol == "X" ? XImage : OImage, for: .normal)
         
-        // change X and O colors
-//        if sender.currentTitle == "X" {
-//            sender.setTitleColor(UIColor(red: 0.60, green: 0.77, blue: 0.95, alpha: 1.00), for: .normal)
-//        } else {
-//            sender.setTitleColor(UIColor(red: 0.93, green: 0.48, blue: 0.55, alpha: 1.00), for: .normal)
-//        }
+        sender.restorationIdentifier = currentPlayer!.symbol //to compare them later
         
         //main logic
         game()
