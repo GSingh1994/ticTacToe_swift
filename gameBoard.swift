@@ -30,13 +30,15 @@ class gameBoard: UIViewController {
     
     struct Player {
         var name: String
+        var id: String
         var isPlaying: Bool
         var symbol: String
         var score: Int
         var isWinner: Bool
         
-        init(name: String, isPlaying: Bool, symbol: String, score: Int, isWinner: Bool) {
+        init(name: String, id: String, isPlaying: Bool, symbol: String, score: Int, isWinner: Bool) {
             self.name = name
+            self.id = id
             self.isPlaying = isPlaying
             self.symbol = symbol
             self.score = score
@@ -44,14 +46,15 @@ class gameBoard: UIViewController {
         }
     }
     
-    var p1 = Player(name: "p1", isPlaying: true, symbol: "X", score: 0, isWinner: false)
+    var p1 = Player(name: "p1",id: "p1", isPlaying: false, symbol: "X", score: 0, isWinner: false)
     
-    var p2 = Player(name: "p2", isPlaying: false, symbol: "O", score: 0, isWinner: false)
+    var p2 = Player(name: "p2",id: "p2", isPlaying: false, symbol: "O", score: 0, isWinner: false)
     
-    var currentPlayer: gameBoard.Player? //don't know why
+    var currentPlayer: gameBoard.Player?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         //add styles to scoreView
         scoreView.layer.cornerRadius = 10
         scoreView.layer.shadowColor = UIColor.gray.cgColor
@@ -63,8 +66,12 @@ class gameBoard: UIViewController {
         playerOneLabel.text = p1.name
         playerTwoLabel.text = p2.name
         
+        playerOneScore.text = String(p1.score)
+        playerTwoScore.text = String(p2.score)
+        
         //start game with p1
         currentPlayer = p1
+        p1.isPlaying = true
         
         //add custom gradient background
         let gradientLayer = CAGradientLayer()
@@ -100,15 +107,33 @@ class gameBoard: UIViewController {
             currentPlayer = p1.isPlaying ? p1 : p2
         } else {
             currentPlayer?.isWinner = true
-            //show end-game alert msg
             
+            //show end-game alert msg
             showAlert(result: "win")
             
             //change scores
-            currentPlayer?.score += 1
-            playerOneScore.text = String(p1.score)
-            playerTwoScore.text = String(p2.score)
+            if currentPlayer!.id == "p1" {
+                p1.score += 1
+            } else if currentPlayer!.id == "p2"{
+                p2.score += 1
+            }
         }
+    }
+    
+    func resetGame(){
+        //clean gameBoard
+        totalTurns = 0
+        
+        //send gameScore to main screen
+        let controller = storyboard?.instantiateViewController(withIdentifier: "mainScreen") as! mainScreen
+        controller.playerOneScore = p1.score
+        controller.playerTwoScore = p2.score
+        
+        //reloads current view
+        let parent = view.superview
+        view.removeFromSuperview()
+        view = nil
+        parent?.addSubview(view)
     }
     
     func checkWinner() -> Bool {
@@ -165,7 +190,7 @@ class gameBoard: UIViewController {
             self.navigationController?.popViewController(animated: true)
         }))
         alert.addAction(UIAlertAction(title: "Play again", style: UIAlertAction.Style.default,handler: {(_: UIAlertAction!) in
-            //Play again action
+            self.resetGame()
         }))
         
         self.present(alert, animated: true, completion: nil)
@@ -177,7 +202,6 @@ class gameBoard: UIViewController {
         let resizedImage =  oimage?.resized(to: CGSize(width: 80, height: 80))
         return resizedImage!
     }
-    
     
     @IBAction func squarePressed(_ sender: UIButton) {
         // Disable btn after turn

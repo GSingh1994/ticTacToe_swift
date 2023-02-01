@@ -29,12 +29,18 @@ class mainScreen: UIViewController {
         controller.p1.name = playerOneField.text!
         controller.p2.name = playerTwoField.text!
         
+        controller.p1.score = playerOneScore
+        controller.p2.score = playerTwoScore
+        
         //send player choice symbol to gameBoard view
         controller.p1.symbol = p1Symbol
         controller.p2.symbol = p2Symbol
         
         show(controller, sender: self)
     }
+    
+    var playerOneScore = 0
+    var playerTwoScore = 0
     
   
     override func viewDidLoad() {

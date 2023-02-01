@@ -94,11 +94,11 @@
         <scene sceneID="sfR-DT-5eA">
             <objects>
                 <viewController storyboardIdentifier="gameBoard" title="gameBoard" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zEY-Dn-uKI" customClass="gameBoard" customModule="ticTacToe_swift" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="lga-9i-JgY">
+                    <view key="view" contentMode="scaleToFill" id="lga-9i-JgY">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="Yi1-sM-25L" userLabel="Board">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="Yi1-sM-25L" userLabel="Board">
                                 <rect key="frame" x="19" y="261" width="355.33333333333331" height="355.33333333333326"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="3" id="J5C-zy-eWW">
