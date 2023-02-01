@@ -17,13 +17,13 @@ class gameBoard: UIViewController {
     @IBOutlet weak var currentTurnLabel: UILabel!
     
     struct Player {
-        var name: String?
+        var name: String
         var isPlaying: Bool
         var symbol: String
         var score: Int
         var isWinner: Bool
         
-        init(name: String?, isPlaying: Bool, symbol: String, score: Int, isWinner: Bool) {
+        init(name: String, isPlaying: Bool, symbol: String, score: Int, isWinner: Bool) {
             self.name = name
             self.isPlaying = isPlaying
             self.symbol = symbol
@@ -32,7 +32,7 @@ class gameBoard: UIViewController {
         }
     }
     
-    var p1 = Player(name: nil, isPlaying: true, symbol: "X", score: 0, isWinner: false)
+    var p1 = Player(name: "p1", isPlaying: true, symbol: "X", score: 0, isWinner: false)
     
     var p2 = Player(name: "p2", isPlaying: false, symbol: "O", score: 0, isWinner: false)
     
