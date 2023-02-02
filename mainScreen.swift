@@ -13,13 +13,10 @@ class mainScreen: UIViewController {
     
     @IBAction func playerOneChoice(_ sender: UISegmentedControl) {
         p1Symbol = sender.selectedSegmentIndex == 0 ? "X" : "O"
-//        sender.selectedSegmentIndex = p2Symbol == "O" ? 0 : 1
-
     }
     
     @IBAction func playerTwoChoice(_ sender: UISegmentedControl) {
         p2Symbol = sender.selectedSegmentIndex == 0 ? "X" : "O"
-//        sender.selectedSegmentIndex = p1Symbol == "O" ? 1 : 0
     }
     
     @IBAction func startButtonPressed(_ sender: UIButton) {
@@ -44,7 +41,6 @@ class mainScreen: UIViewController {
   
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         //add custom gradient background
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = view.bounds

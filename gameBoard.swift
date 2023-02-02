@@ -63,9 +63,9 @@ class gameBoard: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //hide back-button
-        self.navigationItem.setHidesBackButton(true, animated: true)
-        
+        //remove back-button title
+        self.navigationController?.navigationBar.topItem?.backButtonTitle = ""
+
         //show game number
         gameNumber.text = "Game #" + String(p1.score + p2.score + 1)
         
@@ -84,20 +84,11 @@ class gameBoard: UIViewController {
         playerOneScore.text = String(p1.score)
         playerTwoScore.text = String(p2.score)
         
+        //change player label color
         let redColor = UIColor(red: 0.87, green: 0.35, blue: 0.30, alpha: 1.00)
         let greenColor = UIColor(red: 0.34, green: 0.74, blue: 0.68, alpha: 1.00)
-        //change player color
-        if p1.symbol == "X" {
-            playerOneLabel.textColor = redColor
-        } else {
-            playerOneLabel.textColor = greenColor
-        }
-        
-        if p2.symbol == "X" {
-            playerTwoLabel.textColor = redColor
-        } else {
-            playerTwoLabel.textColor = greenColor
-        }
+        playerOneLabel.textColor = p1.symbol == "X" ? redColor : greenColor
+        playerTwoLabel.textColor = p2.symbol == "X" ? redColor : greenColor
         
         //start game with p1
         currentPlayer = p1
@@ -227,12 +218,13 @@ class gameBoard: UIViewController {
     func showAlert(result: String) {
         let alertStatement = result == "win" ? "\(currentPlayer!.name) won!" : "Game Draw!"
         
-        let alert = UIAlertController(title: alertStatement, message: nil, preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "Go home", style: UIAlertAction.Style.default, handler: { _ in
-            //Reset Action ->> send back to main screen
+        let alert = UIAlertController(title: alertStatement, message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Go home", style: .default, handler: { _ in
+            //send back to main screen
             self.navigationController?.popViewController(animated: true)
         }))
-        alert.addAction(UIAlertAction(title: "Play again", style: UIAlertAction.Style.default,handler: {(_: UIAlertAction!) in
+        alert.addAction(UIAlertAction(title: "Play again", style: .default,handler: {(_: UIAlertAction!) in
+            //refresh gameBoard
             self.resetGame()
         }))
         
