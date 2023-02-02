@@ -1,4 +1,5 @@
 import UIKit
+import SwiftConfettiView
 
 extension UIImage {
     func resized(to size: CGSize) -> UIImage {
@@ -9,7 +10,6 @@ extension UIImage {
 }
 
 class gameBoard: UIViewController {
-    
     //Board squares
     @IBOutlet weak var a1: UIButton!
     @IBOutlet weak var a2: UIButton!
@@ -112,7 +112,6 @@ class gameBoard: UIViewController {
     var totalTurns: Int = 0
     
     func game() {
-        
         totalTurns += 1
         
         let winningCondition = checkWinner()
@@ -131,6 +130,11 @@ class gameBoard: UIViewController {
             currentPlayer = p1.isPlaying ? p1 : p2
         } else {
             currentPlayer?.isWinner = true
+            
+            //add confetti layer
+            let confettiView = SwiftConfettiView(frame: self.view.bounds)
+            self.view.addSubview(confettiView)
+            confettiView.startConfetti()
             
             //show end-game alert msg
             showAlert(result: "win")
