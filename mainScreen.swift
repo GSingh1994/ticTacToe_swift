@@ -52,7 +52,7 @@ class mainScreen: UIViewController {
         let secondGradientColor = UIColor(red: 0.89, green: 0.84, blue: 0.85, alpha: 1.00).cgColor
         gradientLayer.colors = [secondGradientColor,firstGradientColor]
         gradientLayer.zPosition = -1
-        gradientLayer.opacity = 0.5
+        gradientLayer.opacity = 1
         view.layer.addSublayer(gradientLayer)
     }
 

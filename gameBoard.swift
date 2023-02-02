@@ -1,5 +1,6 @@
 import UIKit
 import SwiftConfettiView
+import ViewAnimator
 
 extension UIImage {
     func resized(to size: CGSize) -> UIImage {
@@ -56,7 +57,7 @@ class gameBoard: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         //hide back-button
         self.navigationItem.setHidesBackButton(true, animated: true)
     
@@ -210,7 +211,7 @@ class gameBoard: UIViewController {
     }
     
     func showAlert(result: String) {
-        let alertStatement = result == "win" ? "\(currentPlayer!.name) won!" : "Draw!!"
+        let alertStatement = result == "win" ? "\(currentPlayer!.name) won!" : "Game Draw!"
         
         let alert = UIAlertController(title: alertStatement, message: nil, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "Go home", style: UIAlertAction.Style.default, handler: { _ in
@@ -231,6 +232,10 @@ class gameBoard: UIViewController {
     }
     
     @IBAction func squarePressed(_ sender: UIButton) {
+        //animate button
+        let animation = AnimationType.zoom(scale: 0.1)
+        sender.imageView!.animate(animations: [animation],duration: 0.1)
+        
         // Disable btn after turn
         sender.isEnabled = false
         

@@ -1,16 +1,20 @@
 PODS:
   - SwiftConfettiView (0.1.0)
+  - ViewAnimator (3.1.0)
 
 DEPENDENCIES:
   - SwiftConfettiView
+  - ViewAnimator
 
 SPEC REPOS:
   trunk:
     - SwiftConfettiView
+    - ViewAnimator
 
 SPEC CHECKSUMS:
   SwiftConfettiView: 1bdbc2e6913b6b1c76d8070802b212508ad5c352
+  ViewAnimator: a9ceed80266e00fd435ec4fb99b2df64d580d0e4
 
-PODFILE CHECKSUM: 6d3d8d052867e0ac54db2ae3544ea0413e63dd5b
+PODFILE CHECKSUM: 931561987de5fcf728ebf50e34f3a51f3d88f873
 
 COCOAPODS: 1.11.3

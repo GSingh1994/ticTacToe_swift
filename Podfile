@@ -6,5 +6,7 @@ target 'ticTacToe_swift' do
   use_frameworks!
 
   # Pods for ticTacToe_swift
-pod 'SwiftConfettiView'
+	pod 'SwiftConfettiView'
+	pod "ViewAnimator"
+
 end
