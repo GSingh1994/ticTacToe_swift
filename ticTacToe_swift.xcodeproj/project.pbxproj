@@ -15,6 +15,7 @@
 		5419B8D42986D53900CDB4F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5419B8D22986D53900CDB4F1 /* LaunchScreen.storyboard */; };
 		544682062989677F0034ADD3 /* gameBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 544682052989677F0034ADD3 /* gameBoard.swift */; };
 		544682082989C0BE0034ADD3 /* mainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 544682072989C0BE0034ADD3 /* mainScreen.swift */; };
+		5448F364298B5D2100F0A73A /* Confetti.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5448F363298B5D2100F0A73A /* Confetti.mp3 */; };
 		5454C26229874BA800A9A06B /* gameBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5454C26129874BA800A9A06B /* gameBoardViewController.swift */; };
 		E682CB705E0E3EB6329FDCCE /* Pods_ticTacToe_swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E1F89F8B24A8F2B15C2B308 /* Pods_ticTacToe_swift.framework */; };
 /* End PBXBuildFile section */
@@ -30,6 +31,7 @@
 		5419B8D52986D53900CDB4F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		544682052989677F0034ADD3 /* gameBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gameBoard.swift; sourceTree = "<group>"; };
 		544682072989C0BE0034ADD3 /* mainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainScreen.swift; sourceTree = "<group>"; };
+		5448F363298B5D2100F0A73A /* Confetti.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Confetti.mp3; path = ../../../Downloads/Confetti.mp3; sourceTree = "<group>"; };
 		5454C26129874BA800A9A06B /* gameBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gameBoardViewController.swift; sourceTree = "<group>"; };
 		6CD1CD960C3D96EC997E1B10 /* Pods-ticTacToe_swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ticTacToe_swift.release.xcconfig"; path = "Target Support Files/Pods-ticTacToe_swift/Pods-ticTacToe_swift.release.xcconfig"; sourceTree = "<group>"; };
 		81E5671E0A51547170C01DCC /* Pods-ticTacToe_swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ticTacToe_swift.debug.xcconfig"; path = "Target Support Files/Pods-ticTacToe_swift/Pods-ticTacToe_swift.debug.xcconfig"; sourceTree = "<group>"; };
@@ -54,7 +56,6 @@
 				81E5671E0A51547170C01DCC /* Pods-ticTacToe_swift.debug.xcconfig */,
 				6CD1CD960C3D96EC997E1B10 /* Pods-ticTacToe_swift.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -89,6 +90,7 @@
 		5419B8C62986D53800CDB4F1 /* ticTacToe_swift */ = {
 			isa = PBXGroup;
 			children = (
+				5448F363298B5D2100F0A73A /* Confetti.mp3 */,
 				5419B8C72986D53800CDB4F1 /* AppDelegate.swift */,
 				5419B8C92986D53800CDB4F1 /* SceneDelegate.swift */,
 				5419B8CB2986D53800CDB4F1 /* ViewController.swift */,
@@ -163,6 +165,7 @@
 			files = (
 				5419B8D42986D53900CDB4F1 /* LaunchScreen.storyboard in Resources */,
 				5419B8D12986D53900CDB4F1 /* Assets.xcassets in Resources */,
+				5448F364298B5D2100F0A73A /* Confetti.mp3 in Resources */,
 				5419B8CF2986D53800CDB4F1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

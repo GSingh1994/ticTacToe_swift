@@ -1,7 +1,12 @@
 import UIKit
 import SwiftConfettiView
 import ViewAnimator
+import AVFoundation
 
+//need to play audio
+var player: AVAudioPlayer!
+
+//resize given image
 extension UIImage {
     func resized(to size: CGSize) -> UIImage {
         return UIGraphicsImageRenderer(size: size).image { _ in
@@ -57,10 +62,10 @@ class gameBoard: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         //hide back-button
         self.navigationItem.setHidesBackButton(true, animated: true)
-    
+        
         //show game number
         gameNumber.text = "Game #" + String(p1.score + p2.score + 1)
         
@@ -93,7 +98,7 @@ class gameBoard: UIViewController {
         } else {
             playerTwoLabel.textColor = greenColor
         }
-
+        
         //start game with p1
         currentPlayer = p1
         p1.isPlaying = true
@@ -136,6 +141,15 @@ class gameBoard: UIViewController {
             let confettiView = SwiftConfettiView(frame: self.view.bounds)
             self.view.addSubview(confettiView)
             confettiView.startConfetti()
+            
+            //play confetti sound
+            func playSound() {
+                let url = Bundle.main.url(forResource: "Confetti", withExtension: "mp3")
+                player = try! AVAudioPlayer(contentsOf: url!)
+                player.volume = 0.3
+                player.play()
+            }
+            playSound()
             
             //show end-game alert msg
             showAlert(result: "win")
