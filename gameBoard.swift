@@ -43,15 +43,6 @@ class gameBoard: UIViewController {
         var symbol: String
         var score: Int
         var isWinner: Bool
-        
-        init(name: String, id: String, isPlaying: Bool, symbol: String, score: Int, isWinner: Bool) {
-            self.name = name
-            self.id = id
-            self.isPlaying = isPlaying
-            self.symbol = symbol
-            self.score = score
-            self.isWinner = isWinner
-        }
     }
     
     var p1 = Player(name: "p1",id: "p1", isPlaying: false, symbol: "X", score: 0, isWinner: false)
