@@ -56,7 +56,7 @@ class gameBoard: UIViewController {
         
         //remove back-button title
         self.navigationController?.navigationBar.topItem?.backButtonTitle = ""
-
+        
         //show game number
         gameNumber.text = "Game #" + String(p1.score + p2.score + 1)
         
@@ -163,45 +163,29 @@ class gameBoard: UIViewController {
     
     func checkWinner() -> Bool {
         //winning combinations
-        if a1.restorationIdentifier == a2.restorationIdentifier && a2.restorationIdentifier == a3.restorationIdentifier {
-            if a1.restorationIdentifier != nil {
-                return true
-            }
+        if (a1.restorationIdentifier == a2.restorationIdentifier && a2.restorationIdentifier == a3.restorationIdentifier) && a1.restorationIdentifier != nil {
+            return true
         }
-        if b1.restorationIdentifier == b2.restorationIdentifier && b2.restorationIdentifier == b3.restorationIdentifier {
-            if b1.restorationIdentifier != nil {
-                return true
-            }
+        if (b1.restorationIdentifier == b2.restorationIdentifier && b2.restorationIdentifier == b3.restorationIdentifier) && b1.restorationIdentifier != nil {
+            return true
         }
-        if c1.restorationIdentifier == c2.restorationIdentifier && c2.restorationIdentifier == c3.restorationIdentifier {
-            if c1.restorationIdentifier != nil {
-                return true
-            }
+        if (c1.restorationIdentifier == c2.restorationIdentifier && c2.restorationIdentifier == c3.restorationIdentifier) && c1.restorationIdentifier != nil {
+            return true
         }
-        if a1.restorationIdentifier == b1.restorationIdentifier && b1.restorationIdentifier == c1.restorationIdentifier {
-            if a1.restorationIdentifier != nil {
-                return true
-            }
+        if (a1.restorationIdentifier == b1.restorationIdentifier && b1.restorationIdentifier == c1.restorationIdentifier) && a1.restorationIdentifier != nil {
+            return true
         }
-        if a2.restorationIdentifier == b2.restorationIdentifier && b2.restorationIdentifier == c2.restorationIdentifier {
-            if a2.restorationIdentifier != nil {
-                return true
-            }
+        if (a2.restorationIdentifier == b2.restorationIdentifier && b2.restorationIdentifier == c2.restorationIdentifier) && a2.restorationIdentifier != nil {
+            return true
         }
-        if a3.restorationIdentifier == b3.restorationIdentifier && b3.restorationIdentifier == c3.restorationIdentifier {
-            if a3.restorationIdentifier != nil {
-                return true
-            }
+        if (a3.restorationIdentifier == b3.restorationIdentifier && b3.restorationIdentifier == c3.restorationIdentifier) && a3.restorationIdentifier != nil {
+            return true
         }
-        if a1.restorationIdentifier == b2.restorationIdentifier && b2.restorationIdentifier == c3.restorationIdentifier {
-            if a1.restorationIdentifier != nil {
-                return true
-            }
+        if (a1.restorationIdentifier == b2.restorationIdentifier && b2.restorationIdentifier == c3.restorationIdentifier) && a1.restorationIdentifier != nil {
+            return true
         }
-        if a3.restorationIdentifier == b2.restorationIdentifier && b2.restorationIdentifier == c1.restorationIdentifier {
-            if a3.restorationIdentifier != nil {
-                return true
-            }
+        if (a3.restorationIdentifier == b2.restorationIdentifier && b2.restorationIdentifier == c1.restorationIdentifier) && a3.restorationIdentifier != nil {
+            return true
         }
         return false
     }
